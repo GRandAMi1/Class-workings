@@ -1,0 +1,20 @@
+read -p "Enter number : " n
+m=$n
+b=2
+for (( i=$b; i<=$(($n/2)); i++))
+	do
+	if [ $(($m%$b)) = 0 ]
+	then
+	
+Piyush Jiwane8:29 PM
+n=100
+
+counter=2
+
+temp
+
+for ((i=counter;i</2;i++))
+do
+	n%i -eq 0
+	temp=iX
+	n=n/i

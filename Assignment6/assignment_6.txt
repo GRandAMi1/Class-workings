@@ -1,0 +1,322 @@
+1.
+
+read -p "Enter power of 2 to be printed : " num
+
+for (( i=1; i<=$num; i++))
+do
+        power=$((2**$i))
+        arr[$i]=$power
+done
+echo ${arr[@]}
+
+____________________________________________________________________________________________
+
+2.
+read -p "Enter value of n to get nth harmonic number : " n
+sum=0
+for (( i=1; i<=$n; i++))
+do
+        har=$((1/$i))
+        let sum=sum+$har
+done
+echo $sum
+
+____________________________________________________________________________________________
+
+3.
+
+read -p "Enter numer to be checked : " a
+for ((i=2; i<$a; i++))
+do
+        if [ $(($a%$i)) -eq 0 ]
+        then
+        notprime[$i]=$i
+        else
+        prime[$i]=$i
+        fi
+done
+if [ ${#notprime[@]} -eq 0 ]
+then
+echo "It is a Prime Number"
+else
+echo "It is a Non Prime Number"
+fi
+
+____________________________________________________________________________________________
+
+4.
+
+read -p "Enter first number of range : " first
+read -p "Enter last number of range : " last
+fun(){
+for ((i=2; i<$a; i++))
+do
+        if [ $(($a%$i)) -eq 0 ]
+        then
+        notprime[$i]=$i
+        else
+        prime[$i]=$i
+        fi
+done
+if [ ${#notprime[@]} -eq 0 ]
+then
+primenumber[$a]=$a
+fi
+}
+for (( a=$first; a<=$last; a++))
+do
+        notprime=()
+        prime=()
+        fun
+done
+echo ${primenumber[@]}
+
+____________________________________________________________________________________________
+
+5.
+
+read -p "Enter whos factorial to count : " n
+fac=1
+for (( i=1; i<=$n; i++))
+do
+        let fac=fac*$i
+done
+echo "Factorial of $n is : $fac"
+
+____________________________________________________________________________________________
+
+6.
+
+read -p "Enter Number : " n
+a=$n
+b=2
+divide(){
+while [ $(($a%$b)) -eq 0 ]
+do
+        if [ $a -eq 1 ]
+        then
+        echo "factors are : $factor"
+        exit 0
+        else
+                a=$(($a/$b))
+                factor="$factor x $b"
+        fi
+done
+}
+divide
+for i in 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97
+do
+        b=$i
+        divide
+done
+echo $factor
+
+____________________________________________________________________________________________
+
+1.
+
+read -p "Enter power of 2 to be printed : " num
+power=0
+for (( i=1; i<=$num; i++))
+do
+        power=$((2**$i))
+        if [ $power -le 256 ]
+        then
+        arr[$i]=$power
+        fi
+done
+echo ${arr[@]}
+
+____________________________________________________________________________________________
+
+2.
+
+read -p "Enter your Magic number between 1-100 : " num
+for (( i=0; i<=100; i++))
+do
+        if [ $i -eq $num ]
+        then
+        echo "We found your Number it is : $i"
+        exit 0
+        fi
+done
+
+____________________________________________________________________________________________
+
+3.
+
+H=0
+T=0
+toss(){
+R=$(($RANDOM%2))
+if [ $R -eq 0 ]
+then
+        let H=H+1
+else
+        let T=T+1
+fi
+fun
+}
+fun(){
+if [ $H = 11 ]
+then
+        echo "Heads WINS"
+elif [ $T = 11 ]
+then
+        echo "Tails WINS"
+else
+toss
+fi
+}
+
+toss
+
+____________________________________________________________________________________________
+
+4.
+
+H=100
+toss(){
+R=$(($RANDOM%2))
+if [ $R -eq 0 ]
+then
+        let H=H+1
+else
+        let H=H-1
+fi
+}
+fun(){
+if [ $H = 200 ]
+then
+        echo "Goal achieved"
+        echo "Total plays $i"
+        exit 0
+elif [ $H = 0 ]
+then
+        echo "Sorry You lost Everything :("
+        echo "Total plays $i"
+        exit 0
+fi
+}
+
+for (( i=1; i<=10000000000; i++))
+do
+toss
+fun
+done
+
+
+
+____________________________________________________________________________________________
+
+1.
+
+degF(){
+        F=$((($C*9/5)+32))
+        echo "Temp in degF= $F"
+}
+
+degC(){
+        C=$((($F-32)*5/9))
+        echo "Temp in degC= $C"
+}
+
+read -p "Enter conversion type to (c/f) : " type
+if [ $type = f ]
+then
+        read -p "Enter temp in deg c : " C
+        degF
+else
+        read -p "Enter temp in deg f : " F
+        degC
+fi
+
+____________________________________________________________________________________________
+
+2.
+
+read -p "Enter number : " n
+c=$(($n%10))
+cc=$(($c*100))
+
+b=$((($n-$c)%100))
+
+a=$((($n-$b-$c)/100))
+
+reverse=$(($a+$b+$cc))
+echo $reverse
+if [ $reverse -eq $n ]
+then
+        echo "Number is Palindrome"
+else
+        echo "Number is not Palindrome"
+fi
+
+____________________________________________________________________________________________
+
+3.
+
+prime(){
+read -p "Enter TREE DIGIT number to be checked : " n
+for ((i=2; i<$n; i++))
+do
+        if [ $(($n%$i)) -eq 0 ]
+        then
+        notprime[$i]=$i
+        else
+        prime[$i]=$i
+        fi
+done
+
+if [ ${#notprime[@]} -eq 0 ]
+then
+palindrome
+else
+echo "It is a Non Prime Number"
+fi
+}
+
+palindrome(){
+c=$(($n%10))
+cc=$(($c*100))
+
+b=$((($n-$c)%100))
+
+a=$((($n-$b-$c)/100))
+
+reverse=$(($a+$b+$cc))
+
+echo "It's Palindrome is : $reverse"
+        for ((i=2; i<$reverse; i++))
+        do
+                if [ $(($reverse%$i)) -eq 0 ]
+                then
+                        notprime[$i]=$i
+                else
+                        prime[$i]=$i
+                fi
+        done
+        if [ ${#notprime[@]} -eq 0 ]
+        then
+        echo "It's Palindrome is also a Prime Number"
+        else
+        echo "It's  Palindrome is Non a Prime Number"
+        fi
+}
+
+prime
+
+____________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+

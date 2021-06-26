@@ -1,0 +1,422 @@
+1.
+
+R=$(($RANDOM%10))
+echo "Single digit Random number : $R"
+
+=============================================================================
+
+2.
+
+echo "Rolling your Dice ..."
+sleep 1
+y=6
+R=$(($RANDOM%(y+1)))
+while [ $R = 0 ]
+do
+  R=$(($RANDOM%(y+1)))
+done
+echo $R
+
+=============================================================================
+
+3.
+
+echo "Rolling your 2 Dices ..."
+sleep 1
+y=6
+R=$(($RANDOM%(y+1)))
+while [ $R = 0 ]
+do
+  R=$(($RANDOM%(y+1)))
+done
+echo "First Dice : $R"
+
+T=$(($RANDOM%(y+1)))
+while [ $T = 0 ]
+do
+  T=$(($RANDOM%(y+1)))
+done
+echo "Second Dice : $T"
+
+=============================================================================
+
+4.
+
+echo "your five two digit Random numbers are as follows "
+fun(){
+R=$((($RANDOM%89)+10))
+}
+fun
+a=$R
+echo "first Random number : $R"
+fun
+b=$R
+echo "Second Random number : $R"
+fun
+c=$R
+echo "thrid Random number : $R"
+fun
+d=$R
+echo "fourth Random number : $R"
+fun
+e=$R
+echo "fifth Random number : $R"
+
+echo "Average of five random numbers is : " $((($a+$b+$c+$d+$e)/5))
+
+
+=============================================================================
+
+5.
+
+main(){
+read -p "Enter part of question 5. as (a, b, c) : " value
+}
+
+first(){
+read -p "Enter inches to convert into ft : " f
+num=$(($f/12))
+echo "$f in ft : $num"
+}
+
+second(){
+read -p "Enter length of rectangular plot in ft : " l
+read -p "Enter breadth of rectangular plot in ft : " b
+numbl=$(($l*100/328))
+numbb=$(($b*100/328))
+echo "Length in meters : $numbl"
+echo "Breadth in meters : $numbb"
+}
+
+third(){
+read -p "Enter area of plot in ft.sq : " c
+numc=$(($c/43560))
+echo "Area in acre : $numc"
+}
+
+body(){
+if [ $value = a ]
+then
+        first
+echo
+        main
+        body
+elif [ $value = b ]
+then
+        second
+echo
+        main
+        body
+elif [ $value = c ]
+then
+        third
+echo
+        main
+        body
+fi
+}
+
+main
+body
+
+
+=============================================================================
+
+Selection Practice Problems with if & else
+
+1.
+
+max(){
+base=$a
+for i in $a $b $c $d $e
+do
+if [ $base -lt $i ]
+then
+        base=$i
+fi
+done
+echo "Max number is : $base"
+}
+
+min(){
+base=$a
+for i in $a $b $c $d $e
+do
+if [ $base -gt $i ]
+then
+        base=$i
+fi
+done
+echo "Min number is : $base"
+}
+
+a=$((($RANDOM%900)+100))
+b=$((($RANDOM%900)+100))
+c=$((($RANDOM%900)+100))
+d=$((($RANDOM%900)+100))
+e=$((($RANDOM%900)+100))
+
+echo "Random 5 three digit numbers are : $a $b $c $d $e"
+echo
+max
+min
+
+=============================================================================
+
+2.
+
+read -p "Enter month : " month
+read -p "Enter date : " date
+
+if [ $month = april -o $month = may ]
+then
+        echo "True"
+elif [ $month = march ]
+then
+        if [ $date = 20 -o $date = 21 -o $date = 22 -o $date = 23 -o $date = 24 -o $date = 25 -o $date = 26 -o $date = 27 -o $date = 28 -o $date = 29 -o $date = 30 ]
+        then
+        echo "True"
+        fi
+elif [ $month = june ]
+then
+        if [ $date = 1 -o $date = 2 -o $date = 3 -o $date = 4 -o $date = 5 -o $date = 6 -o $date = 7 -o $date = 8 -o $date = 9 -o $date = 10 -o $date = 11 -o $date = 12 -o $date = 13 -o $date = 14 -o $date = 15 -o $date = 16 -o $date = 17 -o $date = 18 -o $date = 19 -o $date = 20 ]
+        then
+        echo "True"
+        fi
+else
+        echo "False"
+fi
+
+=============================================================================
+
+3.
+
+read -p "Enter Year to Check : " year
+
+if [ $(($year%400)) -eq 0 ]
+then
+        echo "$year is a LEAP Year"
+elif [ $(($year%100)) -eq 0 ]
+then
+        echo "$year is NOT a LEAP Year"
+elif [ $(($year%4)) -eq 0 ]
+then
+        echo "$year is a LEAP Year"
+else
+        echo "$year is NOT a LEAP Year"
+fi
+
+=============================================================================
+
+4.
+
+flip=$(($RANDOM%2))
+if [ $flip -eq 1 ]
+then
+        echo "Heads"
+else
+        echo "Tails"
+fi
+
+=============================================================================
+
+Selection Practice Problems with if, elif and else
+
+1.
+
+read -p "number of Single Digit : " num
+
+case $num in
+        0)
+                echo "Zero"
+                ;;
+        1)
+                echo "One"
+                ;;
+        2)
+                echo "Two"
+                ;;
+        3)
+                echo "Three"
+                ;;
+        4)
+                echo "Four"
+                ;;
+        5)
+                echo "Five"
+                ;;
+        6)
+                echo "Six"
+                ;;
+        7)
+                echo "Seven"
+                ;;
+        8)
+                echo "Eight"
+                ;;
+        9)
+                echo "Nine"
+                ;;
+        *)
+                echo "Enter Single Digit Number Dude "
+esac
+
+=============================================================================
+
+2.
+
+read -p "number of day (1-7) : " num
+
+case $num in
+        0)
+                echo "There is no such day numbered as Zero Dude"
+                ;;
+        1)
+                echo "Monday"
+                ;;
+        2)
+                echo "Tuesday"
+                ;;
+        3)
+                echo "Wednesday"
+                ;;
+        4)
+                echo "Thrusday"
+                ;;
+        5)
+                echo "Friday"
+                ;;
+        6)
+                echo "Saturday"
+                ;;
+        7)
+                echo "Sunday"
+                ;;
+esac
+
+=============================================================================
+
+3.
+
+arr=()
+read -p "Enter number to check its state : " a
+arr[0]=$a
+b=${#arr[0]}
+case $b in
+        0)
+                echo "No number entered"
+                ;;
+        1)
+                echo "Unit"
+                ;;
+        2)
+                echo "Ten"
+                ;;
+        3)
+                echo "hundread"
+                ;;
+        4)
+                echo "Thausand"
+                ;;
+        5)
+                echo "Ten Thausand"
+                ;;
+        6)
+                echo "Lack"
+                ;;
+        7)
+                echo "Ten Lack"
+                ;;
+esac
+
+=============================================================================
+
+4.
+
+max(){
+base=$a
+for i in $a $b $c $d
+do
+if [ $base -lt $i ]
+then
+        base=$i
+fi
+done
+echo "Max number is : $base"
+}
+
+min(){
+base=$a
+for i in $a $b $c $d
+do
+if [ $base -gt $i ]
+then
+        base=$i
+fi
+done
+echo "Min number is : $base"
+}
+
+read -p "Enter Value for 'a' : " aa
+read -p "Enter Value for 'b' : " bb
+read -p "Enter Value for 'c' : " cc
+read -p "Enter Value for 'd' : " dd
+
+a=$(($aa+$bb*$cc))
+b=$(($aa%$bb+$cc))
+c=$(($cc+$aa/$bb))
+d=$(($aa*$bb+$cc))
+echo
+echo "equation answers are :  1st=$a , 2nd=$b , 3rd=$c , 4th=$d "
+echo
+min
+max
+
+=============================================================================
+
+Selection Practice Problems with case statement
+
+4.
+
+echo "enter (1) for Feet to Inch"
+echo "enter (2) for Feet to Meter"
+echo "enter (3) for Inch to Feet"
+echo "enter (4) for Meter to Feet"
+
+read -p "Enter (1-4) for conversions : " num
+echo
+case $num in
+        0)
+                echo "Enter number between (1-4)"
+                ;;
+        1)
+                read -p "Enter value in feet : " a
+                aa=$(($a*12))
+                echo "It will be $aa inches"
+                ;;
+        2)
+                read -p "Enter value in feet : " a
+                aa=$(($a*3048/10000))
+                echo "It will be $aa meters"
+                ;;
+        3)
+                read -p "Enter value in inches : " a
+                aa=$(($a/12))
+                echo "It will be $aa feet"
+                ;;
+        4)
+                read -p "Enter value in meter : " a
+                aa=$(($a*328084/100000))
+                echo "It will be $aa feet"
+esac
+
+
+
+
+
+
+
+
+
+
+
